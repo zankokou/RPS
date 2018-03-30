@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Rock Paper Scissors Part 1</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+          <div class="col-md-offset-2 col-md-8">
+            <div class="jumbotron">
+                <h2>Type R P or S to play Rock Paper Scissors!</h2>
+                <br>
+                <h1 id="user-input"></h1>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+
+
+
+  <script type="text/javascript">
+  
+
+  var compOptions = ["r", "p", "s"];
+
+  var win = 0;
+  var loss = 0;
+  var ties = 0;
+
+
+  document.onkeyup = function(event){
+  var userChoice = event.key;
+  console.log(userChoice);
+
+  var compChoice = compOptions[Math.floor(Math.random() * compOptions.length)];
+  console.log(compChoice);
+
+
+  if(userChoice != "r" && userChoice != "s" && userChoice != "p") {
+	alert("Please pick r p or s");
+  }
+
+  if(userChoice === "r" || userChoice === "s" || userChoice === "p") {
+    // Play the game
+
+  if (compChoice === userChoice){
+    //tie
+    ties++;
+  }
+
+
+  else if (compChoice === "s" && userChoice === "p"){
+    loss++;
+  }
+
+  else if (compChoice === "s" && userChoice === "r"){
+    win++;
+  }
+
+  else if (compChoice === "r" && userChoice === "p"){
+    loss++;
+  }
+
+  else if (compChoice === "r" && userChoice === "s"){
+    win++;
+  }
+
+  else if (compChoice === "p" && userChoice === "s"){
+    loss++;
+  }
+
+  else if (compChoice === "p" && userChoice === "r"){
+    win++;
+  }
+
+  console.log(win);
+  console.log(loss);
+  console.log(ties);
+  }
+  var html = "<p>Your Choice:" + userChoice + "</p><br />" + "<p>CPU Choice:" + compChoice + "</p><br />" + "<p>Wins:" + win + "</p><br />" + "<p>Losses:" + loss + "</p><br />" + "<p>Ties:" + ties + "</p>";
+  document.getElementById("user-input").innerHTML = html;
+
+   } //end of onkeyup
+  </script>
+
+</body>
+
+</html>
